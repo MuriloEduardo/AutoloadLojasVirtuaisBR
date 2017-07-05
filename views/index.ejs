@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <title>Loja <%= Cod_Loja %></title>
+	    <style type="text/css">
+			@-webkit-keyframes fadeinout {
+				0%,100% { opacity: 0; }
+				50% { opacity: 1; }
+			}
+
+			@keyframes fadeinout {
+				0%,100% { opacity: 0; }
+				50% { opacity: 1; }
+			}
+	    	body,
+	    	html,
+	    	iframe {
+	    		margin: 0;
+	    		padding: 0;
+	    		width: 100%;
+	    		height: 100%;
+	    		border: none;
+	    	}
+	    	#alert {
+	    		padding: 5px 15px;
+	    		position: fixed;
+				right: 30px;
+	    		top: 15px;
+	    		margin: 0 auto;
+	    		background-color: rgb(100, 200, 50);
+	    		color: #fff;
+	    		text-align: center;
+	    		display: none;
+				-webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+				-moz-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+				box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+			    -webkit-animation: fadeinout 4s linear forwards;
+			    animation: fadeinout 4s linear forwards;
+	    	}
+	    </style>
+	</head>
+	<body>
+		<div id="alert"><h4>Documento alterado!</h4></div>
+		<iframe id="iframe_main" src="https://lojaemteste.com/loja/index.php?atualizar=1&Cod_Loja=<%= Cod_Loja %>" frame></iframe>
+	</body>
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		let socket = io();
+		let alert  = document.getElementById('alert');
+		let iframe = document.getElementById('iframe_main');
+
+		function Notify(data) {
+			
+			let res = JSON.parse(data.body);
+			let h4  = alert.getElementsByTagName('h4')[0];
+
+			console.log(alert.style.display != '')
+
+			if (alert.style.display != '') {
+				alert.style.display = 'none';
+				h4.innerHTML = res.msg;
+			} else {
+				alert.style.display = 'block';
+				h4.innerHTML = res.msg;
+			}
+
+			alert.style.backgroundColor = res.status == '-1' ? 'red' : 'green';
+			iframe.src 					= iframe.src;
+		}
+
+		socket.on("Change_Document",function(data){
+			Notify(data);
+        });
+	</script>
+</html>
