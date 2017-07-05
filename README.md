@@ -1,18 +1,18 @@
-# AutoloadLojasVirtuaisBR
+# Autoload Lojas Virtuais BR
 
 Precisa-se instalar o Node.js
 
 Após isso, será necessário baixar o AutoloadLojasVirtuaisBR,
 com: 
 
-> `git clone https://github.com/MuriloEduardo/AutoloadLojasVirtuaisBR.git`
+`git clone https://github.com/MuriloEduardo/AutoloadLojasVirtuaisBR.git`
  
  na pasta que desejar.
 
 Depois, no terminal de comando, executar: 
 
-> `cd /Caminho/MeuComputador/Ate/AutoloadLojasVirtuaisBR/`
-> `npm install && npm start`
+`cd /Caminho/MeuComputador/Ate/AutoloadLojasVirtuaisBR/`
+`npm install && npm start`
 
 A pasta de trabalho, será layouts, nela irão as pastas de cada cliente e seu respectivo código.
 
