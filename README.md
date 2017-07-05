@@ -12,6 +12,7 @@ com:
 Depois, no terminal de comando, executar: 
 
 `cd /Caminho/MeuComputador/Ate/AutoloadLojasVirtuaisBR/`
+
 `npm install && npm start`
 
 A pasta de trabalho, será layouts, nela irão as pastas de cada cliente e seu respectivo código.
